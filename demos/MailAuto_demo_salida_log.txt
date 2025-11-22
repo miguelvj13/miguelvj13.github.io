@@ -1,0 +1,2 @@
+[SIM] Fila 1: se hubiera enviado correo a cliente1@ejemplo.com
+[SIM] Fila 2: se hubiera enviado correo a cliente2@empresa.com

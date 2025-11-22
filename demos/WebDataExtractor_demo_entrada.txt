@@ -1,0 +1,5 @@
+URL: https://www.ejemplo-tienda.com/categoria/productos
+Selector ítem: .product-card
+Selector título: .product-title
+Selector precio: .price
+Selector link: .product-link
