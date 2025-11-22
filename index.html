@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="FlowWorks – Automatizaciones sencillas y efectivas para ahorrar tiempo, reducir errores y optimizar procesos."
+    content="FlowWorks – Automatizaciones sencillas y efectivas para ahorrar tiempo, reducir errores y optimizar procesos con Excel, PDFs, archivos, datos web, imágenes, emails e informes."
   />
   <style>
     :root {
@@ -221,6 +221,7 @@
       box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
+      font-size: 0.86rem;
     }
 
     .hero-card-tag {
@@ -231,7 +232,7 @@
     }
 
     .hero-card-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 0.35rem;
     }
@@ -239,13 +240,13 @@
     .hero-card-text {
       font-size: 0.85rem;
       color: var(--muted);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.7rem;
     }
 
     .hero-card-list {
       font-size: 0.8rem;
       color: var(--text);
-      margin-bottom: 1rem;
+      margin-bottom: 0.7rem;
     }
 
     .hero-card-list li {
@@ -467,6 +468,28 @@
       margin-bottom: 0.3rem;
     }
 
+    .plan-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.6rem;
+    }
+
+    .plan-table th,
+    .plan-table td {
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+    }
+
+    .plan-table th {
+      color: #e5e7eb;
+    }
+
+    .plan-table td {
+      color: var(--muted);
+    }
+
     .contact {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
@@ -633,17 +656,18 @@
     <section class="hero">
       <div>
         <h1 class="hero-main-title">
-          Automatizaciones <span class="hero-highlight">a medida</span> para ahorrar tiempo cada día.
+          Automatiza tus <span class="hero-highlight">tareas repetitivas</span> y gana horas cada semana.
         </h1>
         <p class="hero-subtitle">
-          Soy Miguel, estudiante de Ingeniería Informática. Diseño herramientas sencillas que convierten
-          tareas repetitivas en procesos automáticos, sin complicaciones técnicas.
+          Las herramientas <strong>FlowWorks</strong> convierten procesos pesados (archivos, Excel, PDFs, datos web,
+          imágenes, emails e informes) en acciones automáticas listas para usar. Soy Miguel, estudiante de Ingeniería
+          Informática, y te ayudo a aplicar automatización sin complicaciones técnicas.
         </p>
         <div class="hero-badges">
-          <span class="badge badge-accent">Ejecutables listos para usar</span>
+          <span class="badge badge-accent">Versión PRO desde 49 €</span>
+          <span class="badge">Ejecutables listos para usar</span>
+          <span class="badge">Ideal para autónomos y pequeños negocios</span>
           <span class="badge">Básico desde 12 €</span>
-          <span class="badge">Versión PRO desde 49 €</span>
-          <span class="badge">Orientado a autónomos y pequeños negocios</span>
         </div>
         <div class="hero-actions">
           <a
@@ -658,25 +682,29 @@
           </a>
         </div>
         <p class="hero-note">
-          Te cuento qué parte de tu trabajo se puede automatizar y qué opción te conviene más (sin compromiso).
+          Cuéntame qué parte de tu trabajo te hace perder más tiempo y te propongo la automatización más adecuada
+          (sin compromiso).
         </p>
       </div>
 
       <aside class="hero-card">
         <div class="hero-pill"></div>
-        <div class="hero-card-tag">Ejemplo real</div>
-        <div class="hero-card-title">De 2 horas al día a 5 minutos</div>
+        <div class="hero-card-tag">¿Qué puedes automatizar con FlowWorks?</div>
+        <div class="hero-card-title">Ejemplos de tareas típicas</div>
         <p class="hero-card-text">
-          Una tienda online automatizó la descarga de facturas, la limpieza de datos en Excel y la generación
-          de informes PDF diarios con tres herramientas FlowWorks.
+          FlowWorks está pensado para automatizar tareas de oficina y negocio que se repiten cada día y no aportan
+          valor directo.
         </p>
         <ul class="hero-card-list">
-          <li>AutoFile: clasificación automática de facturas.</li>
-          <li>ExcelClean: datos limpios y listos para usar.</li>
-          <li>ReportGen: informe PDF profesional al final del día.</li>
+          <li>Clasificar y ordenar archivos y facturas.</li>
+          <li>Limpiar y preparar datos de Excel para informes.</li>
+          <li>Unir, dividir y organizar PDFs internos.</li>
+          <li>Extraer datos de páginas web a Excel.</li>
+          <li>Enviar correos personalizados desde una tabla.</li>
+          <li>Generar informes PDF con gráficos a partir de Excel.</li>
         </ul>
         <p class="hero-card-text">
-          Resultado: menos errores, mejor información y unas dos horas extra cada día para tareas importantes.
+          Si tu proceso se parece a alguno de estos, probablemente se pueda automatizar de forma sencilla.
         </p>
       </aside>
     </section>
@@ -708,7 +736,12 @@
       <h2 class="section-title">Servicios de automatización</h2>
       <p class="section-subtitle">
         Todas las herramientas incluyen ejecutable (.exe) y una interfaz pensada para que cualquiera pueda utilizarlas.
-        Siempre puedes empezar por la versión Básica y, si te encaja, dar el salto a PRO.
+        Siempre puedes empezar por la versión Básica y, si te encaja, dar el salto a PRO. Si no tienes claro qué encaja
+        mejor en tu caso, simplemente
+        <a href="https://wa.me/34660923057?text=Hola%20Miguel,%20no%20tengo%20claro%20qu%C3%A9%20herramienta%20necesito." target="_blank">
+          cuéntame tu situación
+        </a>
+        y te hago una propuesta directa.
       </p>
 
       <div class="card-grid">
@@ -883,6 +916,15 @@
         La versión BASIC incluye las funciones esenciales con un flujo más sencillo.
       </p>
 
+      <div style="text-align:center; margin-bottom:1.8rem;">
+        <a href="demos/FlowWorks_Demos_PRO.zip" class="btn btn-primary">
+          ⬇ Descargar todas las demos PRO
+        </a>
+        <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--muted);">
+          Incluye las 7 demostraciones de entrada y salida generadas con la versión PRO de cada herramienta.
+        </p>
+      </div>
+
       <div class="demos-grid">
 
         <!-- AutoFile -->
@@ -972,7 +1014,41 @@
       <h2 class="section-title">Packs FlowWorks</h2>
       <p class="section-subtitle">
         Si quieres automatizar varias partes de tu trabajo, estos packs te permiten combinar herramientas con mejor precio.
+        Si tienes dudas sobre qué pack encaja mejor, puedes
+        <a href="https://wa.me/34660923057?text=Hola%20Miguel,%20no%20s%C3%A9%20qu%C3%A9%20pack%20de%20FlowWorks%20me%20conviene." target="_blank">
+          escribirme y lo vemos juntos.
+        </a>
       </p>
+
+      <div class="highlight-box" style="margin-bottom:1.5rem;">
+        <p><strong>Diferencias entre BASIC, PRO y PREMIUM</strong></p>
+        <table class="plan-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Qué incluye</th>
+              <th>Ideal para</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>BASIC</strong></td>
+              <td>Funciones esenciales, flujo sencillo, pensado para tareas concretas y uso individual.</td>
+              <td>Personas que quieren probar la automatización en un proceso muy específico.</td>
+            </tr>
+            <tr>
+              <td><strong>PRO</strong></td>
+              <td>Funciones avanzadas, más opciones de configuración, demos PRO y mejor experiencia de uso.</td>
+              <td>Autónomos y pequeños negocios que quieren notar un cambio real en su día a día.</td>
+            </tr>
+            <tr>
+              <td><strong>PREMIUM</strong></td>
+              <td>Personalización amplia, posibles integraciones, licencias exclusivas y soporte más extendido.</td>
+              <td>Empresas o proyectos que necesitan algo muy adaptado a su forma de trabajar.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="packs">
         <article class="pack-card">
@@ -997,7 +1073,7 @@
         </article>
 
         <article class="pack-card featured">
-          <span class="pack-badge">Más recomendado</span>
+          <span class="pack-badge">Más elegido por negocios</span>
           <h3 class="pack-title">Pack BUSINESS</h3>
           <div class="pack-price">119 €</div>
           <p class="pack-note">
@@ -1167,3 +1243,5 @@
   </script>
 </body>
 </html>
+
+
