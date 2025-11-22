@@ -1,0 +1,26 @@
+<svg width="420" height="120" viewBox="0 0 420 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fw-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#A5B4FC"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="420" height="120" rx="24" fill="#020617"/>
+  <circle cx="70" cy="60" r="34" fill="url(#fw-grad)"/>
+  <path d="M52 52 C60 48 64 48 72 52 C80 56 84 56 92 52"
+        stroke="#0F172A" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M52 66 C60 62 64 62 72 66 C80 70 84 70 92 66"
+        stroke="#0F172A" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <text x="70" y="64" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-weight="700" font-size="16" fill="#0F172A">
+    FW
+  </text>
+  <text x="132" y="58" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-weight="700" font-size="28" fill="#E5E7EB">
+    FlowWorks
+  </text>
+  <text x="132" y="82" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-weight="400" font-size="14" fill="#9CA3AF">
+    Automatización sencilla y efectiva
+  </text>
+</svg>

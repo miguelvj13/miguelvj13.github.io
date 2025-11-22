@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>FlowWorks – Automatización sencilla y efectiva</title>
+  <link rel="icon" type="image/svg+xml" href="logo-flowworks-icon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="FlowWorks – Automatizaciones sencillas y efectivas para ahorrar tiempo, reducir errores y optimizar procesos."
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.65);
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.45);
+      --transition: 0.2s ease;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1d293b 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.4rem 3rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 40%;
+      background: radial-gradient(circle at 30% 20%, #e0f2fe, #38bdf8 40%, #0f172a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0f172a;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.45);
+    }
+
+    .logo-text-main {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      font-size: 1.1rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav a {
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    nav a:hover {
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-main-title {
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      font-weight: 750;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(90deg, #38bdf8, #a5b4fc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      max-width: 28rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .badge {
+      border-radius: 999px;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .badge-accent {
+      border: 1px solid rgba(56, 189, 248, 0.85);
+      background: var(--accent-soft);
+      color: #e0f2fe;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      transition: transform var(--transition), box-shadow var(--transition),
+        background var(--transition), border-color var(--transition), color var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0f172a;
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, #1f2937 0, #020617 45%, #020617 100%);
+      border: 1px solid rgba(30, 64, 175, 0.6);
+      padding: 1.3rem 1.4rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-tag {
+      font-size: 0.78rem;
+      color: #bfdbfe;
+      margin-bottom: 0.4rem;
+      opacity: 0.9;
+    }
+
+    .hero-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-card-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-list {
+      font-size: 0.8rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-list li {
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-pill {
+      position: absolute;
+      inset: auto -40px 8px auto;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle at 20% 0, #e0f2fe, #38bdf8 45%, #1e293b 100%);
+      opacity: 0.15;
+      filter: blur(1px);
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 650;
+      margin-bottom: 0.7rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.3rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), #020617);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+      transition: transform var(--transition), box-shadow var(--transition),
+        border-color var(--transition), background var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: var(--shadow-card);
+      background: radial-gradient(circle at top left, #020617 0, #020617 60%, #020617 100%);
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      font-size: 0.98rem;
+    }
+
+    .card-pill {
+      font-size: 0.7rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .price-line {
+      font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .price-main {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.3rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      gap: 0.4rem;
+    }
+
+    .tag-soft {
+      font-size: 0.72rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-xs {
+      padding: 0.3rem 0.9rem;
+      font-size: 0.78rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+    }
+
+    .pill-strong {
+      border-color: rgba(56, 189, 248, 0.8);
+      color: #e0f2fe;
+      background: var(--accent-soft);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
+      gap: 1.4rem;
+    }
+
+    .list {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .highlight-box {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.8);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .highlight-box strong {
+      color: #e5e7eb;
+    }
+
+    .packs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .pack-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), #020617);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+      transition: transform var(--transition), border-color var(--transition),
+        box-shadow var(--transition), background var(--transition);
+    }
+
+    .pack-card.featured {
+      border-color: rgba(56, 189, 248, 0.7);
+      background: radial-gradient(circle at top left, #0b1220 0, #020617 45%, #020617 100%);
+      box-shadow: var(--shadow-card);
+    }
+
+    .pack-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .pack-price {
+      font-size: 1rem;
+      font-weight: 650;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .pack-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .pack-card ul {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .pack-card li {
+      margin-bottom: 0.25rem;
+    }
+
+    .pack-badge {
+      font-size: 0.72rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.1);
+      color: #bbf7d0;
+      border: 1px solid rgba(22, 163, 74, 0.5);
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.85);
+      font-size: 0.86rem;
+    }
+
+    .contact-line {
+      margin-bottom: 0.35rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+  <div class="logo">
+    <img src="logo-flowworks-main.svg" alt="FlowWorks logo" style="height:60px; border-radius:16px;">
+  </div>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#packs">Packs</a>
+    <a href="#como-trabajo">Cómo trabajo</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-main-title">
+          Automatizaciones <span class="hero-highlight">a medida</span> para ahorrar tiempo cada día.
+        </h1>
+        <p class="hero-subtitle">
+          Soy Miguel, estudiante de Ingeniería Informática. Diseño herramientas sencillas que convierten
+          tareas repetitivas en procesos automáticos, sin complicaciones técnicas.
+        </p>
+        <div class="hero-badges">
+          <span class="badge badge-accent">Ejecutables listos para usar</span>
+          <span class="badge">Básico desde 12 €</span>
+          <span class="badge">Versión PRO desde 49 €</span>
+          <span class="badge">Orientado a autónomos y pequeños negocios</span>
+        </div>
+        <div class="hero-actions">
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/34660923057?text=Hola%20Miguel,%20he%20visto%20FlowWorks%20y%20quiero%20automatizar%20una%20tarea."
+            target="_blank"
+          >
+            💬 Escribir por WhatsApp
+          </a>
+          <a class="btn btn-outline" href="#servicios">
+            Ver servicios
+          </a>
+        </div>
+        <p class="hero-note">
+          Te cuento qué parte de tu trabajo se puede automatizar y qué opción te conviene más (sin compromiso).
+        </p>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-pill"></div>
+        <div class="hero-card-tag">Ejemplo real</div>
+        <div class="hero-card-title">De 2 horas al día a 5 minutos</div>
+        <p class="hero-card-text">
+          Una tienda online automatizó la descarga de facturas, la limpieza de datos en Excel y la generación
+          de informes PDF diarios con tres herramientas FlowWorks.
+        </p>
+        <ul class="hero-card-list">
+          <li>AutoFile: clasificación automática de facturas.</li>
+          <li>ExcelClean: datos limpios y listos para usar.</li>
+          <li>ReportGen: informe PDF profesional al final del día.</li>
+        </ul>
+        <p class="hero-card-text">
+          Resultado: menos errores, mejor información y unas dos horas extra cada día para tareas importantes.
+        </p>
+      </aside>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi">
+      <h2 class="section-title">Quién soy</h2>
+      <p class="section-subtitle">
+        Transparente desde el principio: no soy una gran empresa, pero sí me tomo en serio cada proyecto.
+      </p>
+      <div class="highlight-box">
+        <p>
+          Hola, soy <strong>Miguel Valencia Justo</strong>, estudiante de Ingeniería Informática apasionado por
+          la automatización y la optimización de procesos.
+        </p>
+        <p>
+          Aunque todavía no soy un experto, cuento con habilidades sólidas de programación y una gran capacidad para
+          analizar tareas repetitivas y transformarlas en herramientas automáticas que ahorran tiempo y reducen errores.
+        </p>
+        <p>
+          Mi objetivo con <strong>FlowWorks</strong> es ofrecer soluciones accesibles, fáciles de usar y adaptadas a
+          cada cliente: ejecutables sencillos, interfaces claras y automatizaciones que realmente se usan en el día a día.
+        </p>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <h2 class="section-title">Servicios de automatización</h2>
+      <p class="section-subtitle">
+        Todas las herramientas incluyen ejecutable (.exe) y una interfaz pensada para que cualquiera pueda utilizarlas.
+        Siempre puedes empezar por la versión Básica y, si te encaja, dar el salto a PRO.
+      </p>
+
+      <div class="card-grid">
+        <!-- AutoFile -->
+        <article class="card">
+          <div class="card-pill">Organización de archivos</div>
+          <h3 class="card-title">AutoFile – Organizador inteligente de archivos</h3>
+          <p class="card-text">
+            Clasifica automáticamente tus archivos en carpetas ordenadas según tipo, extensión o reglas personalizadas.
+            Ideal para descargas, facturas, documentos y proyectos.
+          </p>
+          <p class="price-line">
+            <span class="price-main">Básico: 12 €</span> · PRO: 49 € · Premium: consultar
+          </p>
+          <div class="card-footer">
+            <span class="tag-soft">Perfecto para facturas y documentos</span>
+            <a
+              href="https://wa.me/34660923057?text=Quiero%20saber%20m%C3%A1s%20sobre%20AutoFile."
+              target="_blank"
+              class="btn btn-outline btn-xs"
+            >
+              Más info
+            </a>
+          </div>
+        </article>
+
+        <!-- ExcelClean -->
+        <article class="card">
+          <div class="card-pill">Excel / Datos</div>
+          <h3 class="card-title">ExcelClean – Limpieza y automatización de Excel</h3>
+          <p class="card-text">
+            Limpia, ordena y transforma tus archivos de Excel de forma automática: columnas, duplicados, formatos,
+            preparación de datos para informes o análisis.
+          </p>
+          <p class="price-line">
+            <span class="price-main">Básico: 12 €</span> · PRO: 49 € · Premium: consultar
+          </p>
+          <div class="card-footer">
+            <span class="tag-soft">Ideal para reportes recurrentes</span>
+            <a
+              href="https://wa.me/34660923057?text=Quiero%20saber%20m%C3%A1s%20sobre%20ExcelClean."
+              target="_blank"
+              class="btn btn-outline btn-xs"
+            >
+              Más info
+            </a>
+          </div>
+        </article>
+
+        <!-- WebDataExtractor -->
+        <article class="card">
+          <div class="card-pill">Web → Excel</div>
+          <h3 class="card-title">WebDataExtractor – Scraper web a Excel</h3>
+          <p class="card-text">
+            Extrae datos de páginas web (productos, perfiles, precios, etc.) y los guarda directamente en Excel,
+            listo para filtrar, ordenar y analizar.
+          </p>
+          <p class="price-line">
+            <span class="price-main">Básico: 12 €</span> · PRO: 49 € · Premium: consultar
+          </p>
+          <div class="card-footer">
+            <span class="tag-soft">Ahorro de horas copiando datos</span>
+            <a
+              href="https://wa.me/34660923057?text=Quiero%20saber%20m%C3%A1s%20sobre%20WebDataExtractor."
+              target="_blank"
+              class="btn btn-outline btn-xs"
+            >
+              Más info
+            </a>
+          </div>
+        </article>
+
+        <!-- PDFMaster -->
+        <article class="card">
+          <div class="card-pill">PDF</div>
+          <h3 class="card-title">PDFMaster – Automatizador de PDF</h3>
+          <p class="card-text">
+            Une, divide, convierte y organiza ficheros PDF sin tener que ir uno por uno ni depender de herramientas online
+            llenas de límites.
+          </p>
+          <p class="price-line">
+            <span class="price-main">Básico: 12 €</span> · PRO: 49 € · Premium: consultar
+          </p>
+          <div class="card-footer">
+            <span class="tag-soft">Documentos más ordenados</span>
+            <a
+              href="https://wa.me/34660923057?text=Quiero%20saber%20m%C3%A1s%20sobre%20PDFMaster."
+              target="_blank"
+              class="btn btn-outline btn-xs"
+            >
+              Más info
+            </a>
+          </div>
+        </article>
+
+        <!-- ImageSorter -->
+        <article class="card">
+          <div class="card-pill">Imágenes</div>
+          <h3 class="card-title">ImageSorter – Organizador de imágenes</h3>
+          <p class="card-text">
+            Organiza carpetas con cientos o miles de fotos según fecha, tipo, tamaño u otros criterios. Perfecto para
+            fotógrafos, contenidos visuales y redes.
+          </p>
+          <p class="price-line">
+            <span class="price-main">Básico: 12 €</span> · PRO: 49 € · Premium: consultar
+          </p>
+          <div class="card-footer">
+            <span class="tag-soft">Menos caos en tus fotos</span>
+            <a
+              href="https://wa.me/34660923057?text=Quiero%20saber%20m%C3%A1s%20sobre%20ImageSorter."
+              target="_blank"
+              class="btn btn-outline btn-xs"
+            >
+              Más info
+            </a>
+          </div>
+        </article>
+
+        <!-- MailAuto -->
+        <article class="card">
+          <div class="card-pill">Emails masivos</div>
+          <h3 class="card-title">MailAuto – Envío de emails desde Excel</h3>
+          <p class="card-text">
+            Envía correos personalizados a partir de una tabla de Excel: nombres, mensajes, adjuntos… sin ir uno a uno
+            ni copiar/pegar direcciones.
+          </p>
+          <p class="price-line">
+            <span class="price-main">Básico: 12 €</span> · PRO: 49 € · Premium: consultar
+          </p>
+          <div class="card-footer">
+            <span class="tag-soft">Perfecto para recordatorios y campañas</span>
+            <a
+              href="https://wa.me/34660923057?text=Quiero%20saber%20m%C3%A1s%20sobre%20MailAuto."
+              target="_blank"
+              class="btn btn-outline btn-xs"
+            >
+              Más info
+            </a>
+          </div>
+        </article>
+
+        <!-- ReportGen -->
+        <article class="card">
+          <div class="card-pill">Informes PDF</div>
+          <h3 class="card-title">ReportGen – Informes PDF desde Excel</h3>
+          <p class="card-text">
+            Genera informes PDF con tablas y gráficos a partir de tus datos en Excel. Siempre con el mismo formato,
+            sin tener que montarlos a mano.
+          </p>
+          <p class="price-line">
+            <span class="price-main">Básico: 12 €</span> · PRO: 49 € · Premium: consultar
+          </p>
+          <div class="card-footer">
+            <span class="tag-soft">Informes rápidos y profesionales</span>
+            <a
+              href="https://wa.me/34660923057?text=Quiero%20saber%20m%C3%A1s%20sobre%20ReportGen."
+              target="_blank"
+              class="btn btn-outline btn-xs"
+            >
+              Más info
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PACKS -->
+    <section id="packs">
+      <h2 class="section-title">Packs FlowWorks</h2>
+      <p class="section-subtitle">
+        Si quieres automatizar varias partes de tu trabajo, estos packs te permiten combinar herramientas con mejor precio.
+      </p>
+
+      <div class="packs">
+        <article class="pack-card">
+          <h3 class="pack-title">Pack STARTUP</h3>
+          <div class="pack-price">69 €</div>
+          <p class="pack-note">
+            Ideal para autónomos, pequeños negocios y personas que están empezando.
+          </p>
+          <ul>
+            <li>2 automatizaciones en versión PRO.</li>
+            <li>Personalización ligera en ambas.</li>
+            <li>Soporte durante 7 días.</li>
+            <li>Manual de uso básico.</li>
+          </ul>
+          <a
+            href="https://wa.me/34660923057?text=Estoy%20interesado%20en%20el%20Pack%20STARTUP%20de%20FlowWorks."
+            target="_blank"
+            class="btn btn-outline btn-xs"
+          >
+            Consultar este pack
+          </a>
+        </article>
+
+        <article class="pack-card featured">
+          <span class="pack-badge">Más recomendado</span>
+          <h3 class="pack-title">Pack BUSINESS</h3>
+          <div class="pack-price">119 €</div>
+          <p class="pack-note">
+            Para negocios con varios procesos repetitivos que quieren notar un cambio real.
+          </p>
+          <ul>
+            <li>4 automatizaciones en versión PRO.</li>
+            <li>Personalización en cada herramienta.</li>
+            <li>Interfaz mejorada y coherente.</li>
+            <li>Demostración en vídeo o imágenes.</li>
+          </ul>
+          <a
+            href="https://wa.me/34660923057?text=Estoy%20interesado%20en%20el%20Pack%20BUSINESS%20de%20FlowWorks."
+            target="_blank"
+            class="btn btn-primary btn-xs"
+          >
+            Pedir más información
+          </a>
+        </article>
+
+        <article class="pack-card">
+          <h3 class="pack-title">Pack ENTERPRISE</h3>
+          <div class="pack-price">Consultar</div>
+          <p class="pack-note">
+            Para empresas que quieren una solución más completa y adaptada a su forma de trabajar.
+          </p>
+          <ul>
+            <li>Suite completa de automatizaciones.</li>
+            <li>Combinación de PRO y PREMIUM.</li>
+            <li>Sistema de licencias anti-copia.</li>
+            <li>Diseño visual y soporte extendido.</li>
+          </ul>
+          <a
+            href="https://wa.me/34660923057?text=Quiero%20informaci%C3%B3n%20sobre%20el%20Pack%20ENTERPRISE%20de%20FlowWorks."
+            target="_blank"
+            class="btn btn-outline btn-xs"
+          >
+            Hablar sobre ENTERPRISE
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CÓMO TRABAJO + CASO -->
+    <section id="como-trabajo">
+      <h2 class="section-title">Cómo trabajo</h2>
+      <p class="section-subtitle">
+        Proceso claro, sin tecnicismos innecesarios. El objetivo es que todo sea sencillo para ti.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <ul class="list">
+            <li><strong>1. Contacto inicial:</strong> comentas qué tarea te quita tiempo o te resulta pesada.</li>
+            <li><strong>2. Análisis del flujo:</strong> veo si tiene sentido automatizarlo y cómo hacerlo simple.</li>
+            <li><strong>3. Muestra visual:</strong> para versiones PRO o superiores, preparo una demostración corta.</li>
+            <li><strong>4. Desarrollo y personalización:</strong> adapto la herramienta a tu caso.</li>
+            <li><strong>5. Entrega del .exe:</strong> te envío el ejecutable listo para usar con una pequeña guía.</li>
+            <li><strong>6. Soporte:</strong> resuelvo dudas y ajusto pequeños detalles si hace falta.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="card-title" style="margin-bottom:0.4rem;">Caso demostrativo</h3>
+          <p class="card-text" style="margin-bottom:0.4rem;">
+            Una tienda online dedicaba más de dos horas al día a descargar facturas, organizarlas, copiar datos a Excel
+            y preparar informes manualmente.
+          </p>
+          <ul class="list">
+            <li>AutoFile para clasificar automáticamente las facturas.</li>
+            <li>ExcelClean para limpiar y ordenar los datos en Excel.</li>
+            <li>ReportGen para generar un PDF diario con tablas y gráficos.</li>
+          </ul>
+          <p class="card-text" style="margin-top:0.45rem;">
+            El proceso pasó de ~2 horas al día a unos 5 minutos, con menos errores y una presentación más profesional.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LICENCIAS Y GARANTÍA -->
+    <section id="licencias">
+      <h2 class="section-title">Licencias y garantía</h2>
+      <p class="section-subtitle">
+        Incluso siendo soluciones sencillas, cuido la parte de uso exclusivo y soporte para que te sientas tranquilo.
+      </p>
+
+      <div class="two-col">
+        <div class="highlight-box">
+          <h3 class="card-title" style="margin-bottom:0.3rem;">Licencias y uso exclusivo</h3>
+          <p>
+            En versiones PRO y PREMIUM, las herramientas pueden incluir validación por clave o por hardware para que
+            el software sea de uso exclusivo para tu negocio y no se comparta libremente.
+          </p>
+          <p>
+            Esto protege tu inversión y permite mantener un control sobre actualizaciones y mejoras.
+          </p>
+        </div>
+        <div class="highlight-box">
+          <h3 class="card-title" style="margin-bottom:0.3rem;">Garantía FlowWorks</h3>
+          <p>
+            Si la herramienta no cumple con lo que se ha acordado, la ajusto sin coste adicional en un plazo
+            razonable tras la entrega.
+          </p>
+          <p>
+            Si aparece algún fallo técnico al principio del uso, lo corrijo sin coste. En versiones PRO y PREMIUM,
+            la garantía incluye pequeños cambios posteriores.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h2 class="section-title">Contacto</h2>
+      <p class="section-subtitle">
+        Puedes escribirme directamente por WhatsApp o correo. Te respondo de forma cercana y sin lenguaje complicado.
+      </p>
+
+      <div class="contact">
+        <div class="contact-card">
+          <p class="contact-line"><strong>Nombre:</strong> Miguel Valencia Justo</p>
+          <p class="contact-line"><strong>Proyecto:</strong> FlowWorks</p>
+          <p class="contact-line"><strong>Email:</strong> <a href="mailto:miguelvalenjus@gmail.com">miguelvalenjus@gmail.com</a></p>
+          <p class="contact-line">
+            <strong>WhatsApp:</strong>
+            <a href="https://wa.me/34660923057" target="_blank">+34 660 923 057</a>
+          </p>
+          <p style="margin-top:0.6rem;">
+            Cuéntame qué tarea quieres automatizar y, si tiene sentido hacerlo, te propongo una solución concreta
+            con precio cerrado.
+          </p>
+          <div style="margin-top:0.9rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <a
+              class="btn btn-primary btn-xs"
+              href="https://wa.me/34660923057?text=Hola%20Miguel,%20quiero%20comentar%20una%20tarea%20para%20automatizar."
+              target="_blank"
+            >
+              Hablar por WhatsApp
+            </a>
+            <a class="btn btn-outline btn-xs" href="mailto:miguelvalenjus@gmail.com">
+              Enviar un email
+            </a>
+          </div>
+        </div>
+        <div class="highlight-box">
+          <p>
+            <strong>¿Por dónde empezar?</strong><br />
+            La forma más sencilla es que me cuentes qué te quita más tiempo: ordenar archivos, preparar informes,
+            copiar datos, enviar correos, etc.
+          </p>
+          <p style="margin-top:0.5rem;">
+            A partir de ahí, te digo si tiene sentido automatizarlo, qué herramienta encaja mejor (Básico, PRO, pack…)
+            y cuál sería el coste aproximado.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> FlowWorks · Miguel Valencia Justo</span>
+      <span>Automatización sencilla para resultados reales.</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
